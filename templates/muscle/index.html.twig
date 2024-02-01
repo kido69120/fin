@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+	
+
+	<div class="exercice_contain">
+		<h1 id="h1_exo">LISTE DES EXERCICES</h1>
+		
+		<div class="cadreP">
+		{% for muscle in muscles %}
+			<div class="cadre1">
+				<div>
+					<a href="#">
+						<img src=/images/products/ecartes-poulie-vis-a-vis-jpg-64f196be2d1a1851213367.webp>
+					</a>
+				</div>
+                <h2>{{muscle.name}}</h2>
+				
+				<div></div>
+				<a href="#" class="voir_plus">Voir plus</a>
+			</div>
+			
+		</div>
+{% endfor %}
+		<div class="contain_btn">
+			<a href="/register" id="confirm_btn" type="submit">
+				Inscrivez-vous pour profiter de tous nos exercices
+			</a>
+		</div>
+	</div>
+
+
+{% endblock %}
+
