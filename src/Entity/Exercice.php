@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ExerciceRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExerciceRepository::class)]
@@ -21,6 +22,12 @@ class Exercice
 
     #[ORM\ManyToOne(inversedBy: 'Exercice')]
     private ?Intensity $intensity = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $urlPicture = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
 
     public function getId(): ?int
     {
@@ -66,5 +73,29 @@ class Exercice
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getUrlPicture(): ?string
+    {
+        return $this->urlPicture;
+    }
+
+    public function setUrlPicture(?string $urlPicture): static
+    {
+        $this->urlPicture = $urlPicture;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }

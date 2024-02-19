@@ -22,25 +22,25 @@ class ExerciceController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'exercice_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $exercice = new Exercice();
-        $form = $this->createForm(ExerciceType::class, $exercice);
-        $form->handleRequest($request);
+    // #[Route('/new', name: 'exercice_new', methods: ['GET', 'POST'])]
+    // public function new(Request $request, EntityManagerInterface $entityManager): Response
+    // {
+    //     $exercice = new Exercice();
+    //     $form = $this->createForm(ExerciceType::class, $exercice);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($exercice);
-            $entityManager->flush();
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $entityManager->persist($exercice);
+    //         $entityManager->flush();
 
-            return $this->redirectToRoute('exercice', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('exercice', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->render('exercice/new.html.twig', [
-            'exercice' => $exercice,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->render('exercice/new.html.twig', [
+    //         'exercice' => $exercice,
+    //         'form' => $form,
+    //     ]);
+    // }
 
     #[Route('/{id}', name: 'exercice_show', methods: ['GET'])]
     public function show(Exercice $exercice): Response
@@ -50,32 +50,32 @@ class ExerciceController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'exercice_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Exercice $exercice, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(ExerciceType::class, $exercice);
-        $form->handleRequest($request);
+    // #[Route('/{id}/edit', name: 'exercice_edit', methods: ['GET', 'POST'])]
+    // public function edit(Request $request, Exercice $exercice, EntityManagerInterface $entityManager): Response
+    // {
+    //     $form = $this->createForm(ExerciceType::class, $exercice);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $entityManager->flush();
 
-            return $this->redirectToRoute('exercice', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('exercice', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->render('exercice/edit.html.twig', [
-            'exercice' => $exercice,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->render('exercice/edit.html.twig', [
+    //         'exercice' => $exercice,
+    //         'form' => $form,
+    //     ]);
+//}
 
-    #[Route('/{id}', name: 'exercice_delete', methods: ['POST'])]
-    public function delete(Request $request, Exercice $exercice, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$exercice->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($exercice);
-            $entityManager->flush();
-        }
+    // #[Route('/{id}', name: 'exercice_delete', methods: ['POST'])]
+    // public function delete(Request $request, Exercice $exercice, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$exercice->getId(), $request->request->get('_token'))) {
+    //         $entityManager->remove($exercice);
+    //         $entityManager->flush();
+    //     }
 
-        return $this->redirectToRoute('exercice', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('exercice', [], Response::HTTP_SEE_OTHER);
+    // }
 }

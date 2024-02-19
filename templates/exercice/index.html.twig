@@ -8,19 +8,21 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for exercice in exercices %}
-            <tr>
-                <td>{{ exercice.id }}</td>
+            <tr class="card">
                 <td>{{ exercice.name }}</td>
                 <td>
+                    <img src="{{ exercice.urlPicture }}" alt="" style="width: auto; height: 100px;">
+                </td>
+                <td>
                     <a href="{{ path('exercice_show', {'id': exercice.id}) }}">show</a>
-                    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}">edit</a>
+                    {# <a href="{{ path('exercice_edit', {'id': exercice.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}
@@ -31,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('exercice_new') }}">Create new</a>
+    {# <a href="{{ path('exercice_new') }}">Create new</a> #}
 {% endblock %}

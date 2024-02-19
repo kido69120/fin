@@ -23,9 +23,9 @@
           </div> 
 </header>
  #}
-
+{% block header %}
 	<header>
-		<nav class="navbar"> <a id="logo_nav" href="/"><img src="/../assets/img/kissfit-bleu-blanc.png" alt="Logo"></a>
+		<nav class="navbar"> <a id="logo_nav" href="/"><img src="{{asset('images/FlashMuscu.png')}}" alt="Logo"></a>
 
 		<div class="lien">
 			<a href="/">Accueil</a>
@@ -36,8 +36,8 @@
 		</div>
 
 		<div class="user">
-			<a href="/register">S'inscrire</a>
-			<a href="/login">Se connecter</a>
+			<a href="{{path ('signup') }}">S'inscrire</a>
+			<a href="{{path ('login') }}">Se connecter</a>
 		</div>
 
 	</nav>
@@ -46,3 +46,4 @@
 	
 
 	</header>
+	{% endblock %}

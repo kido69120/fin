@@ -22,25 +22,25 @@ class MuscleController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'muscle_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $muscle = new Muscle();
-        $form = $this->createForm(MuscleType::class, $muscle);
-        $form->handleRequest($request);
+    // #[Route('/new', name: 'muscle_new', methods: ['GET', 'POST'])]
+    // public function new(Request $request, EntityManagerInterface $entityManager): Response
+    // {
+    //     $muscle = new Muscle();
+    //     $form = $this->createForm(MuscleType::class, $muscle);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($muscle);
-            $entityManager->flush();
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $entityManager->persist($muscle);
+    //         $entityManager->flush();
 
-            return $this->redirectToRoute('muscle_index', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('muscle_index', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->render('muscle/new.html.twig', [
-            'muscle' => $muscle,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->render('muscle/new.html.twig', [
+    //         'muscle' => $muscle,
+    //         'form' => $form,
+    //     ]);
+    // }
 
     #[Route('/{id}', name: 'muscle_show', methods: ['GET'])]
     public function show(Muscle $muscle): Response
@@ -50,32 +50,32 @@ class MuscleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'muscle_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Muscle $muscle, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(MuscleType::class, $muscle);
-        $form->handleRequest($request);
+    // #[Route('/{id}/edit', name: 'muscle_edit', methods: ['GET', 'POST'])]
+    // public function edit(Request $request, Muscle $muscle, EntityManagerInterface $entityManager): Response
+    // {
+    //     $form = $this->createForm(MuscleType::class, $muscle);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $entityManager->flush();
 
-            return $this->redirectToRoute('muscle_index', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('muscle_index', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->render('muscle/edit.html.twig', [
-            'muscle' => $muscle,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->render('muscle/edit.html.twig', [
+    //         'muscle' => $muscle,
+    //         'form' => $form,
+    //     ]);
+    // }
 
-    #[Route('/{id}', name: 'muscle_delete', methods: ['POST'])]
-    public function delete(Request $request, Muscle $muscle, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$muscle->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($muscle);
-            $entityManager->flush();
-        }
+    // #[Route('/{id}', name: 'muscle_delete', methods: ['POST'])]
+    // public function delete(Request $request, Muscle $muscle, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$muscle->getId(), $request->request->get('_token'))) {
+    //         $entityManager->remove($muscle);
+    //         $entityManager->flush();
+    //     }
 
-        return $this->redirectToRoute('muscle_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('muscle_index', [], Response::HTTP_SEE_OTHER);
+    // }
 }
